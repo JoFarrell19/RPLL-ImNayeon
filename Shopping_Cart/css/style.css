@@ -2,24 +2,6 @@
   margin-top: 15px;
   padding: 20px;
 }
-.totals .totals-item{
-  width: 100%;
-  margin-bottom: 10px;
-}
-.totals .totals-item label{
-  width: 79%;
-  text-align: right;
-}
-.totals-value{
-  width: 21%;
-  text-align: right;
-}
-.totals-item-total{
-  font-family: $font-bold;
-}
-.totals-item-total {
-  font-family: $font-bold;
-}
 
 .checkout{
   border: 0;
@@ -29,9 +11,9 @@
   color: #fff;
   font-size: 25px;
   border-radius: 3px;
+  position: relative;
 }
 
 .checkout:hover{
   background-color: #494;
 }
-

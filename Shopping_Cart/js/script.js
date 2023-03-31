@@ -1,5 +1,5 @@
-var taxRate = 0.05;
-var shipping = 15.0;
+var taxRate = 0.11;
+var shipping = 20;
 $(function() {
   var jsonData = [
     {
@@ -16,7 +16,7 @@ $(function() {
     },
     {
       title: "Item 3",
-      price: 100,
+      price: 47,
       quantity: 1,
       total: 100
     },
@@ -34,7 +34,7 @@ $(function() {
     },
     {
       title: "Item 6",
-      price: 199,
+      price: 18,
       quantity: 1,
       total: 199
     }
@@ -50,9 +50,9 @@ $(function() {
       "          " +
       this.title +
       "        </td>" +
-      "        <td>$" +
+      "        <td> IDR " +
       this.price +
-      "</td>" +
+      "        </td>" +
       "        <td>" +
       '          <input class="input is-primary cart-item-qty" style="width:100px" type="number" min="1" value="' +
       this.quantity +
@@ -60,11 +60,12 @@ $(function() {
       this.price +
       '">' +
       "        </td>" +
-      '        <td class="cart-item-total">$' +
+      '        <td class="cart-item-total">IDR ' +
       this.total +
+      "         </td>" +
       "</td>" +
       "        <td>" +
-      '          <a class="button is-small"><style="color:red">X</a>' +
+      '          <a class="button is-small">Remove</a>' +
       "        </td>" +
       "      </tr>";
   });

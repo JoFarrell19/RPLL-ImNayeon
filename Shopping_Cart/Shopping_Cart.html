@@ -1,73 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="author" content="CodeHim">
-  <title>Shopping Cart</title>
-
-  <!-- Bootstrap 5 CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-  <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-  <!-- Style CSS -->
-  <link rel="stylesheet" href="css/style.css">
-
-  <!-- Demo CSS (No need to include it into your project) -->
-  <link rel="stylesheet" href="css/demo.css">
-
-</head>
-
-<body>
-  <main>
-    <!-- Start DEMO HTML (Use the following code into your project)-->
-    <div class="shopping-cart-wrapper">
-      <table class="table is-fullwidth shopping-cart">
-        <thead>
-         <tr>
-									<th>&nbsp;</th>
-									<th>&nbsp;</th>
-									<th>Price</th>
-									<th>Quantity</th>
-									<th>total</th>
-									<th>&nbsp;</th>
-								</tr>
-        </thead>
-      </table>
-      <div class="totals">
-        <div class="totals-item">
-          <label>Subtotal</label>
-          <div class="totals-value" id="cart-subtotal">￥0</div>
-        </div>
-        <div class="totals-item">
-          <label>Tax (5%)</label>
-          <div class="totals-value" id="cart-tax">￥0</div>
-        </div>
-        <div class="totals-item">
-          <label>Shipping</label>
-          <div class="totals-value" id="cart-shipping">￥0</div>
-        </div>
-        <div class="totals-item totals-item-total">
-          <label>Grand Total</label>
-          <div class="totals-value" id="cart-total">￥0</div>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="CodeHim">
+    <title>Shopping Cart</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+      
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="css/style.css">
+	<!-- Demo CSS (No need to include it into your project) -->
+	<link rel="stylesheet" href="css/demo.css">
+  
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container px-4 px-lg-5">
+        <a class="navbar-brand" href="#!">Punix Restaurant</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+            <li class="nav-item"><a class="nav-link" href="#!">Back to Food Menu</a></li>
+            </li>
+          </ul>
+          <form class="d-flex" action="../Shopping_Cart/Shopping_Cart.html">
+            <button class="btn btn-outline-dark" type="submit">
+              <i class="bi-cart-fill me-1"></i>
+              Cart
+              <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+            </button>
+          </form>
         </div>
       </div>
-      <button class="checkout"><a href="../Menu_List2/MenuList.html">Back</a></button>
-      <button class="checkout"><a href="../Checkout/Checkout.html">Checkout</a></button>
-    </div>
-    <!-- END EDMO HTML (Happy Coding!)-->
-  </main>
+    </nav>
+ <!-- <header class="intro">
+ <h1>JavaScript/Vue JS Shopping Cart Example</h1>
+ <p>A simple Vue JS shopping cart.</p>
 
-
-  <footer class="credit">Author: 若邪 - Distributed By: <a title="Awesome web design code & scripts"
-      href="https://www.codehim.com?source=demo-page" target="_blank">CodeHim</a></footer>
-
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
-  <script src="./js/script.js"></script>
-
-</body>
-
+ <div class="action">
+ <a href="https://www.codehim.com/collections/javascript-shopping-cart-examples-with-demo/" title="Back to download and tutorial page" class="btn back">Back to Tutorial</a>
+ </div>
+ </header> -->
+  
+      
+ <main>
+     <!-- Start DEMO HTML (Use the following code into your project)-->
+<div class="shopping-cart-wrapper">
+  <table class="table is-fullwidth shopping-cart">
+    <thead>
+      <tr>
+        <th><abbr title="Position"></abbr></th>
+        <th>Item</th>
+        <th>Price</th>
+        <th>Quantity</th>
+      </tr>
+    </thead>
+  </table>
+  <button class="checkout">Checkout</button>
+     <!-- END EDMO HTML (Happy Coding!)-->
+ </main>
+ 
+      
+ <footer class="py-5 bg-dark">
+  <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Punix Restaurant 2022</p></div>
+</footer>
+  
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script> 
+  </body>
 </html>
