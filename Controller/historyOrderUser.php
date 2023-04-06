@@ -1,16 +1,17 @@
 <?php
-
 $servername = "localhost";
-$username = "username";
-$password = "password";
-$dbname = "punix";
+$username = "root";
+$password = "";
+$database = "punix";
 
-$conn = mysqli_connect($servername, $username, $password, $dbname);
+// Membuat koneksi
+$conn = mysqli_connect($servername, $username, $password, $database);
 
-
+// Memeriksa koneksi
 if (!$conn) {
     die("Koneksi gagal: " . mysqli_connect_error());
 }
+echo "Koneksi berhasil";
 
 $user_id = $_SESSION["user_id"];
 
@@ -33,7 +34,7 @@ if (mysqli_num_rows($result) > 0) {
         echo "Date: " . $row["date"]. "<br><br>";
     }
 } else {
-    echo "Tidak ada data";
+    echo "No data";
 }
 
 mysqli_close($conn);
