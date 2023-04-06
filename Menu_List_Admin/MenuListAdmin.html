@@ -11,15 +11,6 @@
     <!-- partial:index.partial.html -->
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
     <div id="wrapper">
-        <div class="cart-icon-top">
-        </div>
-
-        <div class="cart-icon-bottom">
-        </div>
-
-        <div id="checkout">
-            <a href="../Shopping_Cart/Shopping_Cart.html">CHECKOUT</a>
-        </div>
 
         <!-- <div id="info">
             <p class="i1">Add to cart interaction prototype by Virgil Pana</p>
@@ -32,16 +23,11 @@
 
         <div id="header">
             <ul>
-                <li><a href="../Main_Menu/Main_Menu.html">Home</a></li>
+                <li><a href="../Main_Menu_Admin/MainMenu_Admin.html">Admin Home</a></li>
             </ul>
         </div>
 
         <div id="sidebar">
-            <h3>CART</h3>
-            <div id="cart">
-                <span class="empty">No items in cart.</span>
-            </div>
-
             <h3>CATEGORIES</h3>
             <div class="checklist categories">
                 <ul>
@@ -65,7 +51,7 @@
         <div id="grid">
             <div class="product">
                 <div class="info-large">
-                    <h4>Menu 1</h4>
+                    <h4>Fuyunghai</h4>
                     <div class="sku">
                         Main Course
                     </div>
@@ -76,18 +62,19 @@
 
                     <h3>Description</h3>
                     <div class="colors-large">
-                        <p>Makanan Lezat</p>
+                        <p>Makanan Lezat made in China</p>
                     </div>
 
-                    <button class="add-cart-large">Add To Cart</button>
+                    <button class="edit-food-large">Edit Food</button>
+                    <button class="remove-food-large">Remove Food</button>
                 </div>
                 <div class="make3D">
                     <div class="product-front">
                         <div class="shadow"></div>
                         <img src="../img/fu-yung-hai.jpeg" alt="Menu 1" />
                         <div class="image_overlay"></div>
-                        <div class="add_to_cart">Add to cart</div>
-                        <div class="view_gallery">View gallery</div>
+                        <div class="add_to_cart">Edit Food</div>
+                        <div class="view_gallery">Delete Food</div>
                         <div class="stats">
                             <div class="stats-container">
                                 <span class="product_price">$39</span>
@@ -129,9 +116,10 @@
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- php dibawah untuk ngeluarin semua di db + pas di klik item tsb yang akan masuk idnya -->
-        <!-- <?php
+    <!-- php dibawah untuk ngeluarin semua di db + pas di klik item tsb yang akan masuk idnya -->
+                    <!-- <?php
 					include "../php/db.php";
 					
 					$result = mysqli_query($conn, $sql);
@@ -172,7 +160,6 @@
 				mysqli_close($conn);
 	
 				?> -->
-    </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <!-- partial -->
