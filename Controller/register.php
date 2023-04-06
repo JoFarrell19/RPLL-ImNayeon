@@ -1,35 +1,68 @@
 <?php
-// memeriksa apakah form telah disubmit
-if(isset($_POST['signup'])) {
-    // mengambil data dari form HTML
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $pass = $_POST['pass'];
-    $re_pass = $_POST['re_pass'];
+   
+    $name = "";
+    $email = "";
+    $pass = "";
+    $re_pass = "";
+    $safe = 1;
 
-    // memastikan bahwa kedua password yang dimasukkan cocok
-    if($pass == $re_pass) {
-        // menghubungkan ke database
-        $conn = mysqli_connect("localhost", "root", " ", "punix");
+    $conn = mysqli_connect('localhost', 'root', '', 'punix');
 
-        // memeriksa koneksi ke database
-        if(!$conn) {
-            die("Connection failed: " . mysqli_connect_error());
+    if(isset($_POST['signup'])) {
+        $name = mysqli_real_escape_string($conn, $_POST['name']);
+        $email = mysqli_real_escape_string($conn, $_POST['email']);
+        $pass = mysqli_real_escape_string($conn, $_POST['pass']);
+        $re_pass =mysqli_real_escape_string($conn, $_POST['re_pass']);
+
+        if (empty($name)) {
+            echo "<script type='text/javascript'>alert('Name still empty.'); window.location.href='Registrasi.html';</script>";
+            $safe = 0;
+        }
+        if (empty($email)) {
+            echo "<script type='text/javascript'>alert('Email still empty.'); window.location.href='Registrasi.html';</script>";
+            $safe = 0;
+        }
+        if (empty($pass)) { 
+            echo "<script type='text/javascript'>alert('Password still empty.'); window.location.href='Registrasi.html';</script>";
+            $safe = 0;
+        } 
+        if (empty($re_pass)) { 
+            echo "<script type='text/javascript'>alert('Password still empty.'); window.location.href='Registrasi.html';</script>";
+            $safe = 0;
         }
 
-        // menyimpan data ke dalam database
-        $sql = "INSERT INTO users (name, email, password) VALUES ('$name', '$email', '$pass')";
+        if (strlen($pass) < 6) {
+            echo "<script type='text/javascript'>alert('Password is less than 6 character.'); window.location.href='../Login_Register/register.html';</script>";
+            $safe = 0;
+        }
 
-        if(mysqli_query($conn, $sql)) {
-            echo "Registration successful";
+        $user_check_query = "SELECT * FROM users WHERE email='$email' LIMIT 1";
+        $result = mysqli_query($conn, $user_check_query);
+        $user = mysqli_fetch_assoc($result);
+        
+        if ($user) {
+            if ($user['email'] === $email) {
+                echo "<script type='text/javascript'>alert('Email has already used.'); window.location.href='../Login_Register/register.html';</script>";
+                $safe = 0;
+            }
+        }
+        
+        if($pass == $re_pass) {
+            $safe = 1;
         } else {
-            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+            $safe = 0;
+            echo "<script type='text/javascript'>alert('Password do not match.'); window.location.href='../Login_Register/register.html';</script>";
         }
 
-        // menutup koneksi ke database
+        if ($safe == 1) {
+            $encpass = md5($pass);
+            $query = "INSERT INTO users (id_user, name, email, password, tipe) VALUES('', '$name', '$email', '$encpass', 1)";
+            if(mysqli_query($conn, $query)) {
+                echo "<script type='text/javascript'>alert('Registration Success.'); window.location.href='../Login_Register/login.html';</script>";
+            } else {
+                echo "<script type='text/javascript'>alert('Registration Failed. Please try again later.'); window.location.href='../Login_Register/register.html';</script>";
+            }
+        }
         mysqli_close($conn);
-    } else {
-        echo "Passwords do not match";
     }
-}
 ?>
