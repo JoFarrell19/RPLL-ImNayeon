@@ -842,9 +842,6 @@ body.MakeFloatingCart div.cart-icon-bottom{z-index:300;}
  		    transition: all 500ms ease-in-out;
 }
 
-
-
-
 /* ---------------- */
 .floating-image-large{
 	position:absolute;
@@ -903,7 +900,7 @@ div.sku strong{
 	text-decoration:line-through;
 }
 
-.add-cart-large{
+.edit-food-large{
 	  border: 3px solid #000;
 	  font-size: 17px;
 	  background: #fff;
@@ -919,7 +916,7 @@ div.sku strong{
 		 -o-transition: all 200ms ease-out;
  		    transition: all 200ms ease-out;
 }
-.add-cart-large:hover{
+.edit-food-large:hover{
 	color: #5ff7d2;
 	border-color:#5ff7d2;
 	-webkit-transition: all 200ms ease-out;
@@ -928,6 +925,32 @@ div.sku strong{
 		 -o-transition: all 200ms ease-out;
  		    transition: all 200ms ease-out;
 			cursor:pointer;
+}
+.remove-food-large{
+	border: 3px solid #000;
+	font-size: 17px;
+	background: #fff;
+	text-transform: uppercase;
+	font-weight: 700;
+	padding: 10px;
+	font-family: "Open Sans", sans-serif;
+	width: 246px;
+	margin-top: 38px;	
+	-webkit-transition: all 200ms ease-out;
+	 -moz-transition: all 200ms ease-out;
+	  -ms-transition: all 200ms ease-out;
+	   -o-transition: all 200ms ease-out;
+		   transition: all 200ms ease-out;
+}
+.remove-food-large:hover{
+  color: #5ff7d2;
+  border-color:#5ff7d2;
+  -webkit-transition: all 200ms ease-out;
+	 -moz-transition: all 200ms ease-out;
+	  -ms-transition: all 200ms ease-out;
+	   -o-transition: all 200ms ease-out;
+		   transition: all 200ms ease-out;
+		  cursor:pointer;
 }
 .info-large h3{
     letter-spacing: 1px;
