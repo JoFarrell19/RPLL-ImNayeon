@@ -1,36 +1,35 @@
 <?php
-
+// memeriksa apakah form telah disubmit
 if(isset($_POST['signup'])) {
-   
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $database = "punix";
-
-    $conn = mysqli_connect($servername, $username, $password, $database);
-
-    if (!$conn) {
-        die("Koneksi gagal: " . mysqli_connect_error());
-    }
-
-   
+    // mengambil data dari form HTML
     $name = $_POST['name'];
-    $address = $_POST['address'];
     $email = $_POST['email'];
-    $password = $_POST['password'];
-    $birth = $_POST['birth'];
+    $pass = $_POST['pass'];
+    $re_pass = $_POST['re_pass'];
 
+    // memastikan bahwa kedua password yang dimasukkan cocok
+    if($pass == $re_pass) {
+        // menghubungkan ke database
+        $conn = mysqli_connect("localhost", "root", " ", "punix");
 
-    
-    $sql = "INSERT INTO users (name, address, email, password, birth) VALUES ('$name','$address', '$email', '$password', '$birth' )";
+        // memeriksa koneksi ke database
+        if(!$conn) {
+            die("Connection failed: " . mysqli_connect_error());
+        }
 
-    if (mysqli_query($conn, $sql)) {
-        echo "Data berhasil disimpan";
+        // menyimpan data ke dalam database
+        $sql = "INSERT INTO users (name, email, password) VALUES ('$name', '$email', '$pass')";
+
+        if(mysqli_query($conn, $sql)) {
+            echo "Registration successful";
+        } else {
+            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        }
+
+        // menutup koneksi ke database
+        mysqli_close($conn);
     } else {
-        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        echo "Passwords do not match";
     }
-
-    // Tutup koneksi
-    mysqli_close($conn);
 }
 ?>
