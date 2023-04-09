@@ -1,19 +1,30 @@
 <?php
-// Set up database connection
 $servername = "localhost";
-$username = "yourusername";
-$password = "yourpassword";
-$dbname = "yourdatabase";
+$username = "root";
+$password = "";
+$database = "punix";
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = mysqli_connect($servername, $username, $password, $database);
 
 // Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+if (!$conn) {
+    die("Connection Failed: " . mysqli_connect_error());
 }
+echo "Connection Success";
+
+$user_id = $_SESSION["user_id"];
 
 // Construct SQL query
-$sql = "SELECT * FROM yourtable";
+// $sql = "SELECT menu.name, detailed_carts.quantity
+// FROM menu, detailed_carts, carts, users
+// WHERE users.id_user=$user_id, users.id_user=carts.id_user, carts.id_user=carts.id_cart,  ;
+// ";
+
+$sql = "SELECT *
+FROM detailed_carts
+JOIN menu ON menu.id_menu = detailed_carts.id_menu
+JOIN carts ON carts.id_cart = detailed_cart.id_cart
+WHERE cart.id_user = $user_id;"
 
 // Execute query
 $result = $conn->query($sql);
@@ -22,12 +33,13 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
-        echo "id: " . $row["id"]. " - Name: " . $row["name"]. " - Email: " . $row["email"]. "<br>";
+        echo "Name: " . $row["name"]. "<br>";
+        echo "Quantity: " . $row["quantity"]. "<br>";
     }
 } else {
     echo "0 results";
 }
 
 // Close connection
-$conn->close();
+mysqli_close($conn);
 ?>
