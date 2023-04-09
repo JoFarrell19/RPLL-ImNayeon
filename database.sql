@@ -154,6 +154,7 @@ ALTER TABLE `users`
 --
 ALTER TABLE `carts`
   MODIFY `id_cart` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `detailed_carts`
