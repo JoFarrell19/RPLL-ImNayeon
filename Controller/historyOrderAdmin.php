@@ -13,6 +13,8 @@ if (!$conn) {
 }
 echo "Connection Success";
 
+$user_id = $_SESSION["user_id"];
+
 $sql = "SELECT transactions.*, detailed_transactions.id_menu, detailed_transactions.quantity, menu.name
         FROM transactions
         INNER JOIN detailed_transactions ON transactions.id_transaction = detailed_transactions.id_transaction
