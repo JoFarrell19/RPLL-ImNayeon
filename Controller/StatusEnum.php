@@ -4,6 +4,7 @@ enum Status {
     case OrderReceived;
     case InKitchen;
     case OnTheWay;
+	case Delivered;
 }
 
 // // Using the enum values

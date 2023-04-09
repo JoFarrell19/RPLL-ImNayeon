@@ -21,6 +21,9 @@
         case StatusEnum::OnTheWay:
             echo "Your Order On The Way";
             break;
+        case StatusEnum::OnTheWay:
+            echo "Enjoy Your Order!";
+            break;
     }
     
     if (isset($_POST['submit'])) {
@@ -29,7 +32,7 @@
             echo "<script type='text/javascript'>alert('Status still empty'); window.location.href='../EditProfile/EditProfile.php';</script>";
             $safe = 0;
         }
-        
+
         $result = mysqli_query($con, $user_check_query);
         $user = mysqli_fetch_assoc($result);
         
