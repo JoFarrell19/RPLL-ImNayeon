@@ -14,6 +14,12 @@
         $pass = mysqli_real_escape_string($conn, $_POST['pass']);
         $re_pass =mysqli_real_escape_string($conn, $_POST['re_pass']);
 
+        if($pass == $re_pass) {
+            $safe = 1;
+        } else {
+            $safe = 0;
+            echo "<script type='text/javascript'>alert('Password do not match.'); window.location.href='../Login_Register/register.html';</script>";
+        }
         if (empty($name)) {
             echo "<script type='text/javascript'>alert('Name still empty.'); window.location.href='Registrasi.html';</script>";
             $safe = 0;
@@ -46,19 +52,16 @@
                 $safe = 0;
             }
         }
-        
-        if($pass == $re_pass) {
-            $safe = 1;
-        } else {
-            $safe = 0;
-            echo "<script type='text/javascript'>alert('Password do not match.'); window.location.href='../Login_Register/register.html';</script>";
-        }
 
         if ($safe == 1) {
             $encpass = md5($pass);
             $query = "INSERT INTO users (id_user, name, email, password, tipe) VALUES('', '$name', '$email', '$encpass', 1)";
             if(mysqli_query($conn, $query)) {
-                echo "<script type='text/javascript'>alert('Registration Success.'); window.location.href='../Login_Register/login.html';</script>";
+                $last_id = mysqli_insert_id($conn);
+                $query2 = "INSERT INTO carts (id_cart, id_user) VALUES('', '$last_id')";
+                if(mysqli_query($conn, $query2)){
+                    echo "<script type='text/javascript'>alert('Registration Success.'); window.location.href='../Login_Register/login.html';</script>";
+                }
             } else {
                 echo "<script type='text/javascript'>alert('Registration Failed. Please try again later.'); window.location.href='../Login_Register/register.html';</script>";
             }
