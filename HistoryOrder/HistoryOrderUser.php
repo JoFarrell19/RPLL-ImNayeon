@@ -20,23 +20,40 @@
     <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="../Main_Menu/index.html">Punix Restaurant</a>
+                <a class="navbar-brand" href="../Main_Menu/index.php">Punix Restaurant</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                        <li class="nav-item"><a class="nav-link" href="../Main_Menu/index.html">Main Menu</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../Main_Menu/index.php">Main Menu</a></li>
                         <li class="nav-item"><a class="nav-link" href="../Menu_List/MenuList.php">Food Menu</a></li>
-                        <li class="nav-item"><a class="nav-link" href="../Track_Order/TrackOrder.html">Track Order</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../Track_Order/TrackOrder.php">Track Order</a></li>
                         <li class="nav-item"><a class="nav-link active" href="../HistoryOrder/HistoryOrderUser.php">History Order</a></li>
                         <li class="nav-item"><a class="nav-link" href="../EditProfile/EditProfile.php">Edit Profile</a></li>
                         <li class="nav-item"><a class="nav-link" href="../Controller/logout.php">Logout</a></li>
                         </li>
                     </ul>
-                    <form class="d-flex" action="../Shopping_Cart/Shopping_Cart.html">
+                    <form class="d-flex" action="../Shopping_Cart/Shopping_Cart.php">
                         <button class="btn btn-outline-dark" type="submit">
                             <i class="bi-cart-fill me-1"></i>
                             Cart
-                            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                            <span class="badge bg-dark text-white ms-1 rounded-pill">
+                            <?php
+                                $servername = "localhost";
+                                $username = "root";
+                                $password = "";
+                                $dbname = "punix";
+                                
+                                $conn = new mysqli($servername, $username, $password, $dbname);
+
+                                $sql = "SELECT COUNT(detailed_carts.id_detailed_cart) AS total 
+                                        FROM detailed_carts 
+                                        JOIN carts on detailed_carts.id_cart = carts.id_cart
+                                        WHERE carts.id_user = '$loggedin_id';";
+                                $result = mysqli_query($conn, $sql);
+                                $data = mysqli_fetch_assoc($result);
+                                echo $data ['total'];
+                            ?>
+                            </span>
                         </button>
                     </form>
                 </div>

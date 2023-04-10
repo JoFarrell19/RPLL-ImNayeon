@@ -29,14 +29,14 @@ if (!isset($loggedin_id) || $loggedin_id == NULL) {
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container px-4 px-lg-5">
-        <a class="navbar-brand" href="#!">Punix Restaurant</a>
+        <a class="navbar-brand" href="../Main_Menu/index.php">Punix Restaurant</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
             <li class="nav-item"><a class="nav-link" href="#!">Back to Food Menu</a></li>
             </li>
           </ul>
-          <form class="d-flex" action="../Shopping_Cart/Shopping_Cart.html">
+          <form class="d-flex" action="../Shopping_Cart/Shopping_Cart.php">
             <button class="btn btn-outline-dark" type="submit">
               <i class="bi-cart-fill me-1"></i>
               Cart
@@ -71,7 +71,6 @@ if (!isset($loggedin_id) || $loggedin_id == NULL) {
  <a href="https://www.codehim.com/collections/javascript-shopping-cart-examples-with-demo/" title="Back to download and tutorial page" class="btn back">Back to Tutorial</a>
  </div>
  </header> -->
-<<<<<<< HEAD
   
       
  <main>
@@ -127,63 +126,4 @@ if (!isset($loggedin_id) || $loggedin_id == NULL) {
   
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script> 
   </body>
-=======
-
-
-  <main>
-    <!-- Start DEMO HTML (Use the following code into your project)-->
-    <div class="shopping-cart-wrapper">
-      <table class="table is-fullwidth shopping-cart">
-        <thead>
-          <tr>
-            <th>Item</th>
-            <th>Price</th>
-            <th>Quantity</th>
-          </tr>
-        </thead>
-        <tbody>
-          <?php
-                $servername = "localhost";
-                $username = "root";
-                $password = "";
-                $database = "punix";
-
-                $conn = mysqli_connect($servername, $username, $password, $database);
-                $sql = "SELECT * from detailed_carts 
-                JOIN menu ON detailed_carts.id_menu = menu.id_menu
-                JOIN carts ON detailed_carts.id_cart = carts.id_cart
-                WHERE id_user = $user_check";
-
-                    $result = mysqli_query($conn, $sql);
-                            
-                    if (mysqli_num_rows($result) > 0) {
-                        while($row = mysqli_fetch_assoc($result)) {       
-                            echo "<tr>";
-                            echo "<th>" .$row["name"]. "</td>";
-                            echo "<th>" .$row["price"]. "</td>";
-                            echo "<th>" .$row["quantity"]. "</td>";
-                            echo "</tr>";
-                        }
-                    } else {
-                        echo "<script type='text/javascript'>alert('No Data.');</script>";
-                    }               
-          ?>
-          
-        </tbody>
-      </table>
-      <button class="checkout">Checkout</button>
-      <!-- END EDMO HTML (Happy Coding!)-->
-  </main>
-
-
-  <footer class="py-5 bg-dark">
-    <div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; Punix Restaurant 2022</p>
-    </div>
-  </footer>
-
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
-</body>
-
->>>>>>> 100748e5f68ff8f21500e6eb599634657d777526
 </html>
