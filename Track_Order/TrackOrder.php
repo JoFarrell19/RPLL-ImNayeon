@@ -1,4 +1,4 @@
-<!-- <?php
+<?php
     session_start();
     $con = mysqli_connect('localhost', 'root', '', 'punix');
     $user_check=$_SESSION["iduser"];
@@ -8,7 +8,7 @@
     if(!isset($loggedin_id) || $loggedin_id==NULL) {
         echo "<script type='text/javascript'>alert('Please Login First.'); window.location.href='../Login_Register/login.html'</script>";
     }
-?> -->
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,7 +34,7 @@
 
             $conn = mysqli_connect($servername, $username, $password, $database);
 
-            $sql = "SELECT * FROM transactions WHERE id_user = 0;";
+            $sql = "SELECT * FROM transactions WHERE id_user = $user_check;";
             $result = mysqli_query($conn, $sql);
             while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                 echo("<div class='tracking'>");

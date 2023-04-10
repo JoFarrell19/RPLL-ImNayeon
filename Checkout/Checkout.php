@@ -80,7 +80,7 @@
               $sql = "SELECT COUNT(detailed_carts.id_detailed_cart) AS total 
               FROM detailed_carts 
               JOIN carts on detailed_carts.id_cart = carts.id_cart
-              WHERE carts.id_user = 1;";
+              WHERE carts.id_user = $user_check;";
               $result = mysqli_query($conn, $sql);
               $data = mysqli_fetch_assoc($result);
               echo $data ['total'];
@@ -100,7 +100,7 @@
             FROM detailed_carts 
             JOIN carts on detailed_carts.id_cart = carts.id_cart 
             JOIN menu on detailed_carts.id_menu = menu.id_menu 
-            WHERE carts.id_user = 1;";
+            WHERE carts.id_user = $user_check;";
             $result = mysqli_query($conn, $sql) or die (mysqli_error());
             while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                 echo ("<li class='list-group-item d-flex justify-content-between lh-condensed'>");
@@ -136,7 +136,7 @@
               $sql = "SELECT SUM(menu.price * detailed_carts.quantity) + 10000 AS total FROM menu
                       JOIN detailed_carts on menu.id_menu = detailed_carts.id_menu
                       JOIN carts on detailed_carts.id_cart = carts.id_cart
-                      WHERE carts.id_user = 1";
+                      WHERE carts.id_user = $user_check";
               $result = mysqli_query($conn, $sql);
               $data = mysqli_fetch_assoc($result);
               echo ("Rp. ".$data ['total']);
