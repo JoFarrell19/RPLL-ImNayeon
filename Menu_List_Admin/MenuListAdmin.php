@@ -103,8 +103,8 @@
                             echo'<div class="shadow"></div>';
                             echo'<img src="../img/'.$row["image"].'" alt="Menu 1" />';
                             echo'<div class="image_overlay"></div>';
-                            echo'<div href="../Controller/ShoppingCart.php"?id_menu='.$row["id_menu"].' class="add_to_cart">Add to cart</div>';
-                            echo'<div href="view gallery"?id_menu='.$row["id_menu"].' class="view_gallery">View gallery</div>';
+                            echo'<div href=""?id_menu='.$row["id_menu"].' class="edit_menu">Edit Menu</div>';
+                            echo'<div href=""?id_menu='.$row["id_menu"].' class="delete_menu">Delete Menu</div>';
                             echo'<div class="stats">';
                                 echo'<div class="stats-container">';
                                     echo'<span class="product_name">'.$row["name"].'</span>';
