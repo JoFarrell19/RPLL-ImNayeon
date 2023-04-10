@@ -37,7 +37,7 @@ if ($result) {
 $isFound = false;
 
 for ($i = 0; $i < count($detailedCarts); $i++) {
-    if ($detailedCarts[$i]['Id_Drink'] == $id_drink_int) {
+    if ($detailedCarts[$i]['id_menu'] == $id_menu_int) {
         $query = "UPDATE detailed_carts SET quantity = quantity + ".$quantity." WHERE id_detailed_cart = ?";
         $statement = $db->prepare($query);
         $statement->bind_param('i', $detailedCarts[$i]['Id_Detailed_Cart']);
@@ -55,9 +55,9 @@ for ($i = 0; $i < count($detailedCarts); $i++) {
 }
 
 if ($isFound == false) {
-    $query = "INSERT INTO detailed_carts(id_cart, id_drink, quantity) VALUES (?,?,?)";
+    $query = "INSERT INTO detailed_carts(id_cart, id_menu, quantity) VALUES (?,?,?)";
     $statement = $db->prepare($query);
-    $statement->bind_param('iii', $detailedCarts[0]['Id_Cart'], $id_drink_int, $quantity);
+    $statement->bind_param('iii', $detailedCarts[0]['Id_Cart'], $id_menu_int, $quantity);
     $statement->execute();
     if ($statement->affected_rows > 0) {
         http_response_code(200);
