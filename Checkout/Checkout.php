@@ -52,7 +52,7 @@
           class="navbar-toggler-icon"></span></button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-          <li class="nav-item"><a class="nav-link" href="#!">Back to Shopping Cart</a></li>
+          <li class="nav-item"><a class="nav-link" href="Shopping_Cart.html">Back to Shopping Cart</a></li>
           </li>
         </ul>
       </div>
@@ -122,7 +122,7 @@
             <div>
               <h6 class="my-0">Shipping</h6>
             </div>
-            <span class="text-muted">Rp. 10.000</span>
+            <span class="text-muted">Rp. 10000</span>
           </li>
           <li class="list-group-item d-flex justify-content-between">
             <span>Total</span>
