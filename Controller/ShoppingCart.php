@@ -14,17 +14,11 @@ echo "Connection Success";
 
 $user_id = $_SESSION["user_id"];
 
-// Construct SQL query
-// $sql = "SELECT menu.name, detailed_carts.quantity
-// FROM menu, detailed_carts, carts, users
-// WHERE users.id_user=$user_id, users.id_user=carts.id_user, carts.id_user=carts.id_cart,  ;
-// ";
-
 $sql = "SELECT *
 FROM detailed_carts
 JOIN menu ON menu.id_menu = detailed_carts.id_menu
 JOIN carts ON carts.id_cart = detailed_cart.id_cart
-WHERE cart.id_user = $user_id;"
+WHERE cart.id_user = $user_id";
 
 // Execute query
 $result = $conn->query($sql);
