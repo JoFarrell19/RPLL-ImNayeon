@@ -9,14 +9,19 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 
 
 if ($conn->connect_error) {
-    die("Koneksi gagal: " . $conn->connect_error);
+    die("Connection Failed " . $conn->connect_error);
 }
 
 
-$id_cart = $_GET ["id_cart"];
 $id_menu = $_GET ["id_menu"];
+$quantity = $_GET ["quantity"];
+$user_id = $_GET ["id_user"];
 
-$sql = "INSERT INTO detailed_carts (id_cart, id_menu, quantity) VALUES ('$id_cart', $id_menu, 1 )";
+$sql = "SELECT detailed_carts.id_detailed_cart, detailed_carts.id_cart, detailed_carts.id_drink, detailed_carts.quantity 
+FROM detailed_carts 
+JOIN carts 
+ON detailed_carts.id_cart=carts.id_cart 
+WHERE carts.id_user =";
 
 
 if ($conn->query($sql) === TRUE) {
