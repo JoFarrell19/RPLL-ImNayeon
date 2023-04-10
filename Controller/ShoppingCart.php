@@ -74,6 +74,4 @@ if ($isFound == false) {
         echo "Failed";
     }
 }
-
-mysqli_close($conn);
 ?>
