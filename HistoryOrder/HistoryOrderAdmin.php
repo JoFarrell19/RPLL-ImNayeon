@@ -1,3 +1,14 @@
+<?php
+    session_start();
+    $con = mysqli_connect('localhost', 'root', '', 'punix');
+    $user_check=$_SESSION["iduser"];
+    $sql=mysqli_query($con,"select * from users where id_user='$user_check'");
+    $row=mysqli_fetch_array($sql,MYSQLI_ASSOC);
+    $loggedin_id=$row['id_user'];
+    if(!isset($loggedin_id) || $loggedin_id==NULL) {
+        echo "<script type='text/javascript'>alert('Please Login First.'); window.location.href='../Login_Register/login.html'</script>";
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -9,25 +20,12 @@
     <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="#!">Punix Restaurant</a>
+                <a class="navbar-brand" href="../Main_Menu_Admin/MainMenu_Admin.html">Punix Restaurant</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                        <li class="nav-item"><a class="nav-link" href="#!">Main Menu</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Food Menu</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Track Order</a></li>
-                        <li class="nav-item"><a class="nav-link active" href="#!">History Order</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Edit Profile</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Logout</a></li>
-                        </li>
+                        <li class="nav-item"><a class="nav-link" href="../Main_Menu_Admin/MainMenu_Admin.html">Back to Main Menu</a></li>
                     </ul>
-                    <form class="d-flex" action="../Shopping_Cart/Shopping_Cart.html">
-                        <button class="btn btn-outline-dark" type="submit">
-                            <i class="bi-cart-fill me-1"></i>
-                            Cart
-                            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-                        </button>
-                    </form>
                 </div>
             </div>
         </nav>
@@ -58,13 +56,38 @@
             <table id="tbOrderHistory" class="table border ps-table w-100 mb-3">
 				<thead>
                     <tr>
-                        <th class="font-weight-bold py-2 border-0">Order ID</th>
-						<th class="font-weight-bold py-2 border-0 quantity">Payment Method</th>
-						<th class="font-weight-bold py-2 border-0 ">Total</th>
+                        <th class="font-weight-bold py-2 border-0 ">ID Order</th>
+                        <th class="font-weight-bold py-2 border-0 ">ID User</th>
 						<th class="font-weight-bold py-2 border-0 ">Status</th>
+                        <th class="font-weight-bold py-2 border-0 ">Date</th>
 					</tr>
 				</thead>
-                <tbody>	</tbody>
+                <tbody>	
+                <?php
+                    $servername = "localhost";
+                    $username = "root";
+                    $password = "";
+                    $database = "punix";
+
+                    $conn = mysqli_connect($servername, $username, $password, $database);
+                    $sql = "SELECT * FROM transactions";
+
+                    $result = mysqli_query($conn, $sql);
+                            
+                    if (mysqli_num_rows($result) > 0) {
+                        while($row = mysqli_fetch_assoc($result)) {       
+                            echo "<tr>";
+                            echo "<td>" .$row["id_transaction"]. "</td>";
+                            echo "<td>" .$row["id_user"]. "</td>";
+                            echo "<td>" .$row["status"]. "</td>";
+                            echo "<td>" .$row["date"]. "</td>";
+                            echo "</tr>";
+                        }
+                    } else {
+                        echo "<script type='text/javascript'>alert('No Data.');</script>";
+                    }                           
+                ?>   
+                </tbody>
 			</table>
 		</div>
     </div>
