@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 06, 2023 at 07:21 PM
+-- Generation Time: Apr 10, 2023 at 07:35 PM
 -- Server version: 10.4.17-MariaDB
--- PHP Version: 8.0.0
+-- PHP Version: 8.0.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -154,7 +154,6 @@ ALTER TABLE `users`
 --
 ALTER TABLE `carts`
   MODIFY `id_cart` int(11) NOT NULL AUTO_INCREMENT;
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `detailed_carts`
@@ -185,36 +184,6 @@ ALTER TABLE `transactions`
 --
 ALTER TABLE `users`
   MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `carts`
---
-ALTER TABLE `carts`
-  ADD CONSTRAINT `carts_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`);
-
---
--- Constraints for table `detailed_carts`
---
-ALTER TABLE `detailed_carts`
-  ADD CONSTRAINT `detailed_carts_ibfk_1` FOREIGN KEY (`id_cart`) REFERENCES `carts` (`id_cart`),
-  ADD CONSTRAINT `detailed_carts_ibfk_2` FOREIGN KEY (`id_menu`) REFERENCES `menu` (`id_menu`);
-
---
--- Constraints for table `detailed_transactions`
---
-ALTER TABLE `detailed_transactions`
-  ADD CONSTRAINT `detailed_transactions_ibfk_1` FOREIGN KEY (`id_transaction`) REFERENCES `transactions` (`id_transaction`),
-  ADD CONSTRAINT `detailed_transactions_ibfk_2` FOREIGN KEY (`id_menu`) REFERENCES `menu` (`id_menu`);
-
---
--- Constraints for table `transactions`
---
-ALTER TABLE `transactions`
-  ADD CONSTRAINT `transactions_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
