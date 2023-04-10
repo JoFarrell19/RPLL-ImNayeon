@@ -1,3 +1,14 @@
+<?php
+    session_start();
+    $con = mysqli_connect('localhost', 'root', '', 'punix');
+    $user_check = $_SESSION["iduser"];
+    $sql = mysqli_query($con, "select * from users where id_user='$user_check'");
+    $row = mysqli_fetch_array($sql, MYSQLI_ASSOC);
+    $loggedin_id = $row['id_user'];
+    if (!isset($loggedin_id) || $loggedin_id == NULL) {
+        echo "<script type='text/javascript'>alert('Please Login First.'); window.location.href='../Login_Register/login.html'</script>";
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,6 +16,8 @@
     <meta charset="UTF-8">
     <title>Menu List</title>
     <link rel="stylesheet" href="./css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -12,15 +25,6 @@
     <!-- partial:index.partial.html -->
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
     <div id="wrapper">
-        <div class="cart-icon-top">
-        </div>
-
-        <div class="cart-icon-bottom">
-        </div>
-
-        <div id="checkout">
-            <a href="../Shopping_Cart/Shopping_Cart.html">CHECKOUT</a>
-        </div>
 
         <!-- <div id="info">
             <p class="i1">Add to cart interaction prototype by Virgil Pana</p>
@@ -33,24 +37,40 @@
 
         <div id="header">
             <ul>
-                <li><a href="../Main_Menu/Main_Menu.html">Home</a></li>
+                <li><a href="../Main_Menu/index.php">Main Menu</a></li>
+                <li><a href="../Menu_List/MenuList.php">Food Menu</a></li>
+                <li><a href="../Track_Order/TrackOrder.php">Track Order</a></li>
+                <li><a href="../HistoryOrder/HistoryOrderUser.php">History Order</a></li>
+                <li><a href="../EditProfile/EditProfile.php">Edit Profile</a></li>
+                <li><a href="../Controller/logout.php">Logout</a></li>
             </ul>
         </div>
 
         <div id="sidebar">
-            <h3>CART</h3>
-            <div id="cart">
-                <span class="empty">No items in cart.</span>
-            </div>
+            <form class="d-flex" action="../Shopping_Cart/Shopping_Cart.php">
+                <button class="btn btn-outline-dark" type="submit">
+                <i class="bi-cart-fill me-1"></i>
+                Cart
+                <span class="badge bg-dark text-white ms-1 rounded-pill">
+                <!-- <?php
+                    $servername = "localhost";
+                    $username = "root";
+                    $password = "";
+                    $dbname = "punix";
+                    
+                    $conn = new mysqli($servername, $username, $password, $dbname);
 
-            <h3>CATEGORIES</h3>
-            <div class="checklist categories">
-                <ul>
-                    <li><a href=""><span></span>Main Course</a></li>
-                    <li><a href=""><span></span>Snack</a></li>
-                    <li><a href=""><span></span>Beverages</a></li>
-                </ul>
-            </div>
+                    $sql = "SELECT COUNT(detailed_carts.id_detailed_cart) AS total 
+                            FROM detailed_carts 
+                            JOIN carts on detailed_carts.id_cart = carts.id_cart
+                            WHERE carts.id_user = '$loggedin_id';";
+                    $result = mysqli_query($conn, $sql);
+                    $data = mysqli_fetch_assoc($result);
+                    echo $data ['total'];
+                ?> -->
+                </span>
+                </button>
+            </form>
         </div>
 
         <div id="grid-selector">
@@ -104,7 +124,7 @@
                             echo'<div class="shadow"></div>';
                             echo'<img src="../img/'.$row["image"].'" alt="Menu 1" />';
                             echo'<div class="image_overlay"></div>';
-                            echo'<div class="add_to_cart">Add to cart</div>';
+                            echo'<div class="add_to_cart"><a href="../Controller/insert_data.php?menu='.$row["id_menu"].'">Add to cart</a></div>';
                             echo'<div class="view_gallery">Menu Description</div>';
                             echo'<div class="stats">';
                                 echo'<div class="stats-container">';
@@ -151,7 +171,6 @@
             ?>
         </div>
     </div>
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <!-- partial -->
     <script src="./js/script.js"></script>

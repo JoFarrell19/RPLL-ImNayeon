@@ -33,7 +33,7 @@ if (!isset($loggedin_id) || $loggedin_id == NULL) {
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-            <li class="nav-item"><a class="nav-link" href="#!">Back to Food Menu</a></li>
+            <li class="nav-item"><a class="nav-link" href="../Menu_List/MenuList.php">Back to Food Menu</a></li>
             </li>
           </ul>
           <form class="d-flex" action="../Shopping_Cart/Shopping_Cart.php">

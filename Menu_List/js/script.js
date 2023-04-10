@@ -272,7 +272,7 @@ $(document).ready(function(){
 		var productCard = $(this).parent();
 		var position = productCard.offset();
 		var productImage = $(productCard).find('img').get(0).src;
-		var productName = $(productCard).find('.product_name').get(0).innerHTML;				
+		var productName = $(productCard).find('.product_name').get(0).innerHTML;			
 
 		$("body").append('<div class="floating-cart"></div>');		
 		var cart = $('div.floating-cart');		
