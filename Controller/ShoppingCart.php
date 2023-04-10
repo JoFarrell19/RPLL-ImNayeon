@@ -16,7 +16,7 @@ $id_menu = $_GET ["id_menu"];
 $quantity = $_GET ["quantity"];
 $user_id = $_SESSION["user_id"];
 
-$sql =  "SELECT detailed_carts.id_detailed_cart, detailed_carts.id_cart, detailed_carts.id_drink, detailed_carts.quantity 
+$sql =  "SELECT detailed_carts.id_detailed_cart, detailed_carts.id_cart, detailed_carts.id_menu, detailed_carts.quantity 
 	FROM detailed_carts 
 	JOIN carts 
 	ON detailed_carts.id_cart=carts.id_cart 
