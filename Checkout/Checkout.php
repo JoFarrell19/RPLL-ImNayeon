@@ -1,5 +1,13 @@
 <?php
-  $user_id = $_SESSION["user_id"];
+    session_start();
+    $con = mysqli_connect('localhost', 'root', '', 'punix');
+    $user_check=$_SESSION["iduser"];
+    $sql=mysqli_query($con,"select * from users where id_user='$user_check'");
+    $row=mysqli_fetch_array($sql,MYSQLI_ASSOC);
+    $loggedin_id=$row['id_user'];
+    if(!isset($loggedin_id) || $loggedin_id==NULL) {
+        echo "<script type='text/javascript'>alert('Please Login First.'); window.location.href='../Login_Register/login.html'</script>";
+    }
 ?>
 <!doctype html>
 <html lang="en">
