@@ -15,6 +15,7 @@ echo "Connection Success";
 $id_menu = $_GET ["id_menu"];
 $quantity = $_GET ["quantity"];
 $user_id = $_SESSION["user_id"];
+$id_cart = $_GET ["id_cart"];
 
 $sql =  "SELECT detailed_carts.id_detailed_cart, detailed_carts.id_cart, detailed_carts.id_menu, detailed_carts.quantity 
 	FROM detailed_carts 
@@ -24,16 +25,15 @@ $sql =  "SELECT detailed_carts.id_detailed_cart, detailed_carts.id_cart, detaile
 
 $result = mysqli_query($conn, $query);
 
-if ($result) {
-    while ($row = mysqli_fetch_assoc($result)) {
-        echo "ID Detailed Carts: " . $row["id_detailed_cart"] . "<br>";
-        echo "ID Cart : " . $row["id_cart"] . "<br>";
-        echo "ID Menu: " . $row["id_menu"] . "<br>";
-        echo "Quantity : " . $row["quantity"] . "<br>";
-    }
-} else {
-    echo "Error: " . mysqli_error($conn);
+while ($rows->fetch()) {
+    $detailedCart = new stdClass();
+    $detailedCart->Id_Detailed_Cart = $id_detailed_cart;
+    $detailedCart->Id_Cart = $id_cart;
+    $detailedCart->Id_Menu = $id_menu;
+    $detailedCart->Quantity = $quantity;
+    $detailedCarts[] = $detailedCart;
 }
+
 $isFound = false;
 
 for ($i = 0; $i < count($detailedCarts); $i++) {
