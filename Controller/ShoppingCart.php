@@ -23,7 +23,7 @@ $sql = "SELECT detailed_carts.id_detailed_cart, detailed_carts.id_cart, detailed
 	ON detailed_carts.id_cart=carts.id_cart 
 	WHERE carts.id_user = $user_id";
 $stmt = $db->prepare($sql);
-$stmt->bind_param("i", GetOnlineUserId($r));
+$stmt->bind_param("i", $user_id);
 $stmt->execute();
 $result = $stmt->get_result();
 
