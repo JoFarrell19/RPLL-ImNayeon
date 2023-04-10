@@ -1,3 +1,14 @@
+<!-- <?php
+    session_start();
+    $con = mysqli_connect('localhost', 'root', '', 'punix');
+    $user_check=$_SESSION["iduser"];
+    $sql=mysqli_query($con,"select * from users where id_user='$user_check'");
+    $row=mysqli_fetch_array($sql,MYSQLI_ASSOC);
+    $loggedin_id=$row['id_user'];
+    if(!isset($loggedin_id) || $loggedin_id==NULL) {
+        echo "<script type='text/javascript'>alert('Please Login First.'); window.location.href='../Login_Register/login.html'</script>";
+    }
+?> -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,83 +25,29 @@
 <body>
     <div></div>
     <div class="card">
-        <div class="title">Purchase Reciept</div>
-        <div class="info">
+        <div class="title">Tracking Order</div>
+        <?php
+            $servername = "localhost";
+            $username = "root";
+            $password = "";
+            $database = "punix";
+
+            $conn = mysqli_connect($servername, $username, $password, $database);
+
+            $sql = "SELECT * FROM transactions WHERE id_user = 0;";
+            $result = mysqli_query($conn, $sql);
+            while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+                echo("<div class='tracking'>");
+                echo ("<div class='title'>".$row["status"]."</div>");
+                echo("</div>");
+            }
+            ?>
+        <div class="footer">
             <div class="row">
-                <div class="col-5 pull-right">
-                    <span id="heading">Order No.</span><br>
-                    <span id="details">012j1gvs356c</span>
-                </div>
+                <div class="col-10"><a href="../Main_Menu/Main_Menu.php">Back</a></div>
             </div>
         </div>
-        <div class="pricing">
-            <div class="row">
-                <div class="col-9">
-                    <span id="name">BEATS Solo 3 Wireless Headphones</span>
-                </div>
-                <div class="col-3">
-                    <span id="price">&pound;299.99</span>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-9">
-                    <span id="name">Shipping</span>
-                </div>
-                <?php
-                $servername = "localhost";
-                $username = "root";
-                $password = "";
-                $database = "punix";
-
-                $conn = mysqli_connect($servername, $username, $password, $database);
-
-                $sql = "SELECT menu.name, menu.price, detailed_carts.quantity 
-                FROM detailed_carts 
-                JOIN carts on detailed_carts.id_cart = carts.id_cart 
-                JOIN menu on detailed_carts.id_menu = menu.id_menu 
-                WHERE carts.id_user = 1;";
-                $result = mysqli_query($conn, $sql) or die(mysqli_error());
-                while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-                    echo ("<div class='col-9'>");
-                    echo ("<span id='name'>".$row ["name"]."</span>");
-                    echo ("</div>");
-                    echo ("<div class='col-3'>");
-                    echo ("<span id='price' Rp. >".$row ["price"]."</span>");
-                    echo ("</div>");
-                }
-                ?>
-                <div class="row">
-                    <div class="col-9">
-                        <span id="name">Shipping</span>
-                    </div>
-                    <div class="col-3">
-                        <span id="price">Rp. 10000</span>
-                    </div>
-                </div>
-            </div>
-            <div class="total">
-                <div class="row">
-                    <div class="col-9"></div>
-                    <div class="col-3"><big>&pound;262.99</big></div>
-                </div>
-            </div>
-            <div class="tracking">
-                <div class="title">Tracking Order</div>
-            </div>
-            <!-- <div class="progress-track">
-                <ul id="progressbar">
-                    <li class="step0 active " id="step1">Ordered</li>
-                    <li class="step0 active text-center" id="step2">Shipped</li>
-                    <li class="step0 active text-right" id="step3">On the way</li>
-                    <li class="step0 text-right" id="step4">Delivered</li>
-                </ul>
-            </div> -->
-            <div class="footer">
-                <div class="row">
-                    <div class="col-10"><a href="#">Back</a></div>
-                </div>
-            </div>
-        </div>
+    </div>
 </body>
 
 </html>
