@@ -1,11 +1,13 @@
 <?php
     session_start();
+
     $con = mysqli_connect('localhost', 'root', '', 'punix');
     $user_check=$_SESSION['iduser'];
     $sql=mysqli_query($con,"select * from transactions where id_user='$user_check'");
     $row=mysqli_fetch_array($sql,MYSQLI_ASSOC);
     $loggedin_id=$row['id_user'];
     $loggedin_email=$row['email'];
+    
     if(!isset($loggedin_id) || $loggedin_id==NULL) {
         echo "<script type='text/javascript'>alert('Please login first.'); window.location.href='../Login_Register/login.html'</script>";
     }
