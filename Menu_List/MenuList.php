@@ -52,7 +52,7 @@
                 <i class="bi-cart-fill me-1"></i>
                 Cart
                 <span class="badge bg-dark text-white ms-1 rounded-pill">
-                <!-- <?php
+                <?php
                     $servername = "localhost";
                     $username = "root";
                     $password = "";
@@ -67,7 +67,7 @@
                     $result = mysqli_query($conn, $sql);
                     $data = mysqli_fetch_assoc($result);
                     echo $data ['total'];
-                ?> -->
+                ?> 
                 </span>
                 </button>
             </form>
