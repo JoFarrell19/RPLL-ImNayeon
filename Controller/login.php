@@ -10,8 +10,8 @@
 	    $row = mysqli_fetch_array($result);
 	    if($row) {
 			$_SESSION["iduser"]= $row["id_user"];
-            if($row["tipe"] == 1){
-                echo "<script type='text/javascript'>alert('Login Success.'); window.location.href='../Main_Menu/index.html'</script>";
+            if($row["type"] == 1){
+                echo "<script type='text/javascript'>alert('Login Success.'); window.location.href='../Main_Menu/index.php'</script>";
             }else{
                 echo "<script type='text/javascript'>alert('Login Success.'); window.location.href='../Main_Menu_Admin/MainMenu_Admin.html'</script>";
             }

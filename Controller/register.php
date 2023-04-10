@@ -55,7 +55,7 @@
 
         if ($safe == 1) {
             $encpass = md5($pass);
-            $query = "INSERT INTO users (id_user, name, email, password, tipe) VALUES('', '$name', '$email', '$encpass', 1)";
+            $query = "INSERT INTO users (id_user, name, email, password, type) VALUES('', '$name', '$email', '$encpass', 1)";
             if(mysqli_query($conn, $query)) {
                 $last_id = mysqli_insert_id($conn);
                 $query2 = "INSERT INTO carts (id_cart, id_user) VALUES('', '$last_id')";
