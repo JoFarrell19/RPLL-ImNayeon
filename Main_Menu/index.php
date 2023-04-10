@@ -1,3 +1,14 @@
+<?php
+    session_start();
+    $con = mysqli_connect('localhost', 'root', '', 'punix');
+    $user_check=$_SESSION["iduser"];
+    $sql=mysqli_query($con,"select * from users where id_user='$user_check'");
+    $row=mysqli_fetch_array($sql,MYSQLI_ASSOC);
+    $loggedin_id=$row['id_user'];
+    if(!isset($loggedin_id) || $loggedin_id==NULL) {
+        echo "<script type='text/javascript'>alert('Please Login First.'); window.location.href='../Login_Register/login.html'</script>";
+    }
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -41,12 +52,12 @@
               <span class="d-inline-block d-lg-block"><a href="#" class="text-black site-menu-toggle js-menu-toggle py-5"><span class="icon-menu h3 text-white"></span></a></span>
               <nav class="site-navigation text-right ml-auto d-none d-lg-none" role="navigation">
                 <ul class="site-menu main-menu js-clone-nav ml-auto ">
-                  <li class="active"><a href="index.html" class="nav-link">Main Menu</a></li>
-                  <li><a href="#" class="nav-link">Food Menu</a></li>
-                  <li><a href="#" class="nav-link">Track Order</a></li>
-                  <li><a href="#" class="nav-link">History Order</a></li>
-                  <li><a href="#" class="nav-link">Edit Profile</a></li>
-                  <li><a href="#" class="nav-link">Logout</a></li>
+                  <li class="active"><a href="index.php" class="nav-link">Main Menu</a></li>
+                  <li><a href="../Menu_List/MenuList.php" class="nav-link">Food Menu</a></li>
+                  <li><a href="../Track_Order/TrackOrder.php" class="nav-link">Track Order</a></li>
+                  <li><a href="../HistoryOrder/HistoryOrderUser.php" class="nav-link">History Order</a></li>
+                  <li><a href="../EditProfile/EditProfile.php" class="nav-link">Edit Profile</a></li>
+                  <li><a href="../Controller/logout.php" class="nav-link">Logout</a></li>
                 </ul>
               </nav>
             </div>       
