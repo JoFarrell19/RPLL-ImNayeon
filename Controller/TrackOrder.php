@@ -17,7 +17,7 @@ $user_id = $_SESSION["user_id"];
 // Construct SQL query
 $sql = "SELECT transaction.status, transaction.date
 from transactions
-WHERE transaction.id_user=$user_id;"
+WHERE transaction.id_user=$user_id";
 
 // Execute query
 $result = $conn->query($sql);
