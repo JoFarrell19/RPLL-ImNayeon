@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 21, 2023 at 06:30 AM
+-- Generation Time: Apr 10, 2023 at 07:35 PM
 -- Server version: 10.4.17-MariaDB
--- PHP Version: 8.0.0
+-- PHP Version: 8.0.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,19 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `punix`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `admins`
---
-
-CREATE TABLE `admins` (
-  `id_admin` int(11) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `password` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -81,7 +68,8 @@ CREATE TABLE `menu` (
   `id_menu` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
   `price` int(11) NOT NULL,
-  `description` varchar(100) NOT NULL
+  `description` varchar(100) NOT NULL,
+  `image` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -94,7 +82,7 @@ CREATE TABLE `transactions` (
   `id_transaction` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
   `status` varchar(100) NOT NULL,
-  `date` date NOT NULL
+  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -106,21 +94,14 @@ CREATE TABLE `transactions` (
 CREATE TABLE `users` (
   `id_user` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
-  `address` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
-  `birth` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `type` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `admins`
---
-ALTER TABLE `admins`
-  ADD PRIMARY KEY (`id_admin`);
 
 --
 -- Indexes for table `carts`
@@ -165,34 +146,44 @@ ALTER TABLE `users`
   ADD PRIMARY KEY (`id_user`);
 
 --
--- Constraints for dumped tables
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- Constraints for table `carts`
+-- AUTO_INCREMENT for table `carts`
 --
 ALTER TABLE `carts`
-  ADD CONSTRAINT `carts_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`);
+  MODIFY `id_cart` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- Constraints for table `detailed_carts`
+-- AUTO_INCREMENT for table `detailed_carts`
 --
 ALTER TABLE `detailed_carts`
-  ADD CONSTRAINT `detailed_carts_ibfk_1` FOREIGN KEY (`id_cart`) REFERENCES `carts` (`id_cart`),
-  ADD CONSTRAINT `detailed_carts_ibfk_2` FOREIGN KEY (`id_menu`) REFERENCES `menu` (`id_menu`);
+  MODIFY `id_detailed_cart` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- Constraints for table `detailed_transactions`
+-- AUTO_INCREMENT for table `detailed_transactions`
 --
 ALTER TABLE `detailed_transactions`
-  ADD CONSTRAINT `detailed_transactions_ibfk_1` FOREIGN KEY (`id_transaction`) REFERENCES `transactions` (`id_transaction`),
-  ADD CONSTRAINT `detailed_transactions_ibfk_2` FOREIGN KEY (`id_menu`) REFERENCES `menu` (`id_menu`);
+  MODIFY `Id_detailed_transaction` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- Constraints for table `transactions`
+-- AUTO_INCREMENT for table `menu`
+--
+ALTER TABLE `menu`
+  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `transactions`
 --
 ALTER TABLE `transactions`
-  ADD CONSTRAINT `transactions_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`);
+  MODIFY `id_transaction` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
