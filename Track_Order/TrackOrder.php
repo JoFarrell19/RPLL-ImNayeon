@@ -44,7 +44,7 @@
             ?>
         <div class="footer">
             <div class="row">
-                <div class="col-10"><a href="../Main_Menu/Main_Menu.php">Back</a></div>
+                <div class="col-10"><a href="../Main_Menu/index.php">Back</a></div>
             </div>
         </div>
     </div>
