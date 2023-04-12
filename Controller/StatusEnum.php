@@ -1,7 +1,7 @@
 <?php
 
 enum Status {
-    case OrderReceived;
+    case OnProcess;
     case InKitchen;
     case OnTheWay;
 	case Delivered;

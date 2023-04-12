@@ -83,6 +83,8 @@ if (!isset($loggedin_id) || $loggedin_id == NULL) {
         <th>Item</th>
         <th>Price</th>
         <th>Quantity</th>
+        <th><abbr title="Position"></abbr></th>
+        <th><abbr title="Position"></abbr></th>
       </tr>
     </thead>
     <?php
@@ -93,7 +95,7 @@ if (!isset($loggedin_id) || $loggedin_id == NULL) {
         
       $conn = new mysqli($servername, $username, $password, $dbname);
 
-      $sql = "SELECT detailed_carts.quantity, menu.name, menu.price
+      $sql = "SELECT detailed_carts.quantity, menu.name, menu.price, menu.id_menu
               FROM detailed_carts
               JOIN carts ON carts.id_cart = detailed_carts.id_cart
               JOIN menu ON menu.id_menu = detailed_carts.id_menu
@@ -107,15 +109,18 @@ if (!isset($loggedin_id) || $loggedin_id == NULL) {
           echo "<td></td>";
           echo "<td>" .$row["name"]. "</td>";
           echo "<td>" .$row["price"]. "</td>";
-          echo "<td>" .$row["quantity"]. "</td>";
+          echo "<td><form action='../Controller/editquantity.php' method='POST'><input type='text' name='quantity' id='quantity' value=".$row["quantity"]."></td>";
+          echo "<td><input type='submit' name='edit' value='Edit Quantity'></form></td>";
+          echo "<td><button type='submit' onclick=\"window.location.href='../Controller/removefoodcart.php?id=".$row["id_menu"]."'\">Remove</button></td>";
           echo "</tr>";
         }
+        echo "</table>";
+        echo "<button type='submit' onclick=\"window.location.href='../Checkout/Checkout.php'\" class=\"checkout\">Checkout</button>";
       } else {
+        echo "</table>";
         echo "<script type='text/javascript'>alert('No Data.');</script>";
       }             
     ?>
-  </table>
-  <button type="submit" onclick="window.location.href='../Checkout/Checkout.php'" class="checkout">Checkout</button>
      <!-- END EDMO HTML (Happy Coding!)-->
  </main>
  

@@ -125,7 +125,6 @@
                             echo'<img src="../img/'.$row["image"].'" alt="Menu 1" />';
                             echo'<div class="image_overlay"></div>';
                             echo'<div class="add_to_cart"><a href="../Controller/insert_data.php?menu='.$row["id_menu"].'">Add to cart</a></div>';
-                            echo'<div class="view_gallery">Menu Description</div>';
                             echo'<div class="stats">';
                                 echo'<div class="stats-container">';
                                     echo'<span class="product_name">'.$row["name"].'</span>';
@@ -133,7 +132,6 @@
                                     // echo'<p>Main Course</p>';
 
                                     echo'<div class="product-options">';
-                                        echo'<strong>Description</strong>';
                                         echo'<span>'.$row["description"].'</span>';
                                     echo'</div>';
                                 echo'</div>';
@@ -155,11 +153,6 @@
                                 echo'<div class="y"></div>';
                                     echo'<div class="x"></div>';
                                 echo'</div>';
-                            echo'</div>';
-                        echo'</div>';
-                        echo'<div class="flip-back">';
-                            echo'<div class="cy"></div>';
-                            echo'<div class="cx"></div>';
                             echo'</div>';
                         echo'</div>';
                     echo'</div>';
