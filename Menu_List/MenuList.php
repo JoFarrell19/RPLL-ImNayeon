@@ -73,16 +73,6 @@
             </form>
         </div>
 
-        <div id="grid-selector">
-            <div id="grid-menu">
-                View:
-                <ul>
-                    <li class="largeGrid"><a href=""></a></li>
-                    <li class="smallGrid"><a class="active" href=""></a></li>
-                </ul>
-            </div>
-        </div>
-
         <div id="grid">
 
             <?php
@@ -167,12 +157,6 @@
         }
         mysqli_close($conn);
         ?>
-    </div>
-</div>
-            }
-
-
-            ?>
         </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>

@@ -27,7 +27,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         
         move_uploaded_file($_FILES['image']['tmp_name'], $target);
         
-        echo "<script type='text/javascript'>alert('Success Added'); window.location.href='../Main_Menu_Admin/MainMenu_Admin.php';</script>";
+        echo "<script type='text/javascript'>alert('Success Added'); window.location.href='../Main_Menu_Admin/MainMenuAdmin.php';</script>";
     }
 
     mysqli_close($conn);

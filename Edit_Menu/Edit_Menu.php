@@ -1,3 +1,14 @@
+<?php
+    session_start();
+    $con = mysqli_connect('localhost', 'root', '', 'punix');
+    $user_check = $_SESSION["iduser"];
+    $sql = mysqli_query($con, "select * from users where id_user='$user_check'");
+    $row = mysqli_fetch_array($sql, MYSQLI_ASSOC);
+    $loggedin_id = $row['id_user'];
+    if (!isset($loggedin_id) || $loggedin_id == NULL) {
+        echo "<script type='text/javascript'>alert('Please Login First.'); window.location.href='../Login_Register/login.html'</script>";
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,7 +54,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container px-4 px-lg-5">
-            <a class="navbar-brand" href="../Main_Menu_Admin/MainMenuAdmin.html">Admin Punix Restaurant</a>
+            <a class="navbar-brand" href="../Main_Menu_Admin/MainMenuAdmin.php">Admin Punix Restaurant</a>
         </div>
     </nav>
     <div class="main">

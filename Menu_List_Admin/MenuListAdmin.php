@@ -1,3 +1,14 @@
+<?php
+    session_start();
+    $con = mysqli_connect('localhost', 'root', '', 'punix');
+    $user_check = $_SESSION["iduser"];
+    $sql = mysqli_query($con, "select * from users where id_user='$user_check'");
+    $row = mysqli_fetch_array($sql, MYSQLI_ASSOC);
+    $loggedin_id = $row['id_user'];
+    if (!isset($loggedin_id) || $loggedin_id == NULL) {
+        echo "<script type='text/javascript'>alert('Please Login First.'); window.location.href='../Login_Register/login.html'</script>";
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,11 +32,13 @@
 
         <!-- <div class="menu-title">Punix Restaurant</div> -->
 
-
         <div id="header">
             <ul>
-                <li><a href="../Main_Menu/Main_Menu.html">Home</a></li>
+                <li><a href="../Main_Menu_Admin/MainMenu_Admin.php">Home</a></li>
             </ul>
+        </div>
+
+        <div id="sidebar">
         </div>
 
         <div id="grid">
@@ -70,9 +83,7 @@
                             echo'<img src="../img/'.$row["image"].'" alt="Menu 1" />';
                             echo'<div class="image_overlay"></div>';
                             echo'<div class="edit_menu"><a href="../Edit_Menu/Edit_Menu.php?menu='.$row["id_menu"].'">Edit Menu</a></div>';
-                            echo'<div class="delete_menu"><a href="../Controller/Edit_Food.php?menu='.$row["id_menu"].'">Delete Menu</a></div>';
-                            // echo'<div href=""?id_menu='.$row["id_menu"].' class="edit_menu">Edit Menu</div>';
-                            // echo'<div href=""?id_menu='.$row["id_menu"].' class="delete_menu">Delete Menu</div>';
+                            echo'<div class="delete_menu"><a href="../Controller/Delete_Menu.php?menu='.$row["id_menu"].'">Delete Menu</a></div>';
                             echo'<div class="stats">';
                                 echo'<div class="stats-container">';
                                     echo'<span class="product_name">'.$row["name"].'</span>';
