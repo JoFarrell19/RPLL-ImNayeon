@@ -102,62 +102,73 @@
 			$result = mysqli_query($conn, $sql);
 			while ($row = mysqli_fetch_array($result)) {
 
-                    echo'<div class="product">';
-                        echo'<div class="info-large">';
-                            echo'<h4>'.$row["name"].'</h4>';
-                        // echo'<div class="sku">';
-                        //     echo'Main Course'; untuk CATEGORY
-                        // echo'</div>';
+                echo'<div class="product">';
+                    echo'<div class="info-large">';
+                        echo'<h4>'.$row["name"].'</h4>';
+                    // echo'<div class="sku">';
+                    //     echo'Main Course'; untuk CATEGORY
+                    // echo'</div>';
 
-                        echo'<div class="price-big">';
-                            echo'<span> </span>'.$row["price"];
-                        echo'</div>';
-
-                        echo'<h3>Description</h3>';
-                        echo'<div class="colors-large">';
-                            echo'<p>'.$row["description"].'</p>';
-                        echo'</div>';
+                    echo'<div class="price-big">';
+                        echo'<span> </span>'.$row["price"];
                     echo'</div>';
 
-                    echo'<div class="make3D">';
-                        echo'<div class="product-front">';
-                            echo'<div class="shadow"></div>';
-                            echo'<img src="../img/'.$row["image"].'" alt="Menu 1" />';
-                            echo'<div class="image_overlay"></div>';
-                            echo'<div class="add_to_cart"><a href="../Controller/insert_data.php?menu='.$row["id_menu"].'">Add to cart</a></div>';
-                            echo'<div class="stats">';
-                                echo'<div class="stats-container">';
-                                    echo'<span class="product_name">'.$row["name"].'</span>';
-                                    echo'<span class="product_price">'.$row["price"].'</span>';
-                                    // echo'<p>Main Course</p>';
+                    echo'<h3>Description</h3>';
+                    echo'<div class="colors-large">';
+                        echo'<p>'.$row["description"].'</p>';
+                    echo'</div>';
+                echo'</div>';
+                
+                echo'<div class="make3D">';
+                    echo'<div class="product-front">';
+                        echo'<div class="shadow"></div>';
+                        echo'<img src="../img/'.$row["image"].'" alt="Menu 1" />';
+                        echo'<div class="image_overlay"></div>';
+                        echo'<div class="add_to_cart"><a href="../Controller/insert_data.php?menu='.$row["id_menu"].'">Add to Cart</a></div>';
+                        echo'<div class="stats">';
+                            echo'<div class="stats-container">';
+                                echo'<span class="product_name">'.$row["name"].'</span>';
+                                echo'<span class="product_price">'.$row["price"].'</span>';
+                                // echo'<p>Main Course</p>';
 
-                                    echo'<div class="product-options">';
-                                        echo'<span>'.$row["description"].'</span>';
-                                    echo'</div>';
-                                echo'</div>';
-                            echo'</div>';
-                        echo'</div>';
-
-                    echo'<div class="product-back">';
-                    echo'<div class="shadow"></div>';
-                        echo'<div class="carousel">';
-                        echo'<ul class="carousel-container">';
-                            echo'<li><img src="../img/'.$row["image"].'" alt="Menu 1" /></li>';
-                                echo'</ul>';
-                            echo'<div class="arrows-perspective">';
-                            echo'<div class="carouselPrev">';
-                                echo'<div class="y"></div>';
-                                    echo'<div class="x"></div>';
-                                    echo'</div>';
-                                echo'<div class="carouselNext">';
-                                echo'<div class="y"></div>';
-                                    echo'<div class="x"></div>';
+                                echo'<div class="product-options">';
+                                    echo'<strong>Description</strong>';
+                                    echo'<span>'.$row["description"].'</span>';
                                 echo'</div>';
                             echo'</div>';
                         echo'</div>';
                     echo'</div>';
-                // echo'</div>';
-            echo'</div>';
+
+                echo'<div class="product-back">';
+                echo'<div class="shadow"></div>';
+                    echo'<div class="carousel">';
+                    echo'<ul class="carousel-container">';
+                        echo'<li><img src="../img/'.$row["image"].'" alt="Menu 1" /></li>';
+                            echo'</ul>';
+                        echo'<div class="arrows-perspective">';
+                        echo'<div class="carouselPrev">';
+                            echo'<div class="y"></div>';
+                                echo'<div class="x"></div>';
+                                echo'</div>';
+                            echo'<div class="carouselNext">';
+                            echo'<div class="y"></div>';
+                                echo'<div class="x"></div>';
+                            echo'</div>';
+                        echo'</div>';
+                    echo'</div>';
+                    echo'<div class="flip-back">';
+                        echo'<div class="cy"></div>';
+                        echo'<div class="cx"></div>';
+                        echo'</div>';
+                    echo'</div>';
+                echo'</div>';
+            // echo'</div>';
+        echo'</div>';
+        }
+        mysqli_close($conn);
+        ?>
+    </div>
+</div>
             }
 
 

@@ -17,7 +17,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $query = "SELECT * FROM menu WHERE name = '$name'";
     $result = mysqli_query($conn, $query);
     if(mysqli_num_rows($result) > 0) {
-        echo "Name already exists in the menu.";
+        echo "<script type='text/javascript'>alert('Name Already Exist');</script>";
     } else {
         $image = $_FILES['image']['name'];
         $target = "../img/" . basename($image);
@@ -27,7 +27,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         
         move_uploaded_file($_FILES['image']['tmp_name'], $target);
         
-        echo "Data inserted successfully.";
+        echo "<script type='text/javascript'>alert('Success Added'); window.location.href='../Main_Menu_Admin/MainMenu_Admin.php';</script>";
     }
 
     mysqli_close($conn);

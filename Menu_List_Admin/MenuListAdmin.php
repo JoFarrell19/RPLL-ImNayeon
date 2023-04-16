@@ -12,15 +12,6 @@
     <!-- partial:index.partial.html -->
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
     <div id="wrapper">
-        <div class="cart-icon-top">
-        </div>
-
-        <div class="cart-icon-bottom">
-        </div>
-
-        <div id="checkout">
-            <a href="../Shopping_Cart/Shopping_Cart.html">CHECKOUT</a>
-        </div>
 
         <!-- <div id="info">
             <p class="i1">Add to cart interaction prototype by Virgil Pana</p>
@@ -35,32 +26,6 @@
             <ul>
                 <li><a href="../Main_Menu/Main_Menu.html">Home</a></li>
             </ul>
-        </div>
-
-        <div id="sidebar">
-            <h3>CART</h3>
-            <div id="cart">
-                <span class="empty">No items in cart.</span>
-            </div>
-
-            <h3>CATEGORIES</h3>
-            <div class="checklist categories">
-                <ul>
-                    <li><a href=""><span></span>Main Course</a></li>
-                    <li><a href=""><span></span>Snack</a></li>
-                    <li><a href=""><span></span>Beverages</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <div id="grid-selector">
-            <div id="grid-menu">
-                View:
-                <ul>
-                    <li class="largeGrid"><a href=""></a></li>
-                    <li class="smallGrid"><a class="active" href=""></a></li>
-                </ul>
-            </div>
         </div>
 
         <div id="grid">
@@ -98,13 +63,16 @@
                             echo'<p>'.$row["description"].'</p>';
                         echo'</div>';
                     echo'</div>';
+                    
                     echo'<div class="make3D">';
                         echo'<div class="product-front">';
                             echo'<div class="shadow"></div>';
                             echo'<img src="../img/'.$row["image"].'" alt="Menu 1" />';
                             echo'<div class="image_overlay"></div>';
-                            echo'<div href=""?id_menu='.$row["id_menu"].' class="edit_menu">Edit Menu</div>';
-                            echo'<div href=""?id_menu='.$row["id_menu"].' class="delete_menu">Delete Menu</div>';
+                            echo'<div class="edit_menu"><a href="../Edit_Menu/Edit_Menu.php?menu='.$row["id_menu"].'">Edit Menu</a></div>';
+                            echo'<div class="delete_menu"><a href="../Controller/Edit_Food.php?menu='.$row["id_menu"].'">Delete Menu</a></div>';
+                            // echo'<div href=""?id_menu='.$row["id_menu"].' class="edit_menu">Edit Menu</div>';
+                            // echo'<div href=""?id_menu='.$row["id_menu"].' class="delete_menu">Delete Menu</div>';
                             echo'<div class="stats">';
                                 echo'<div class="stats-container">';
                                     echo'<span class="product_name">'.$row["name"].'</span>';
