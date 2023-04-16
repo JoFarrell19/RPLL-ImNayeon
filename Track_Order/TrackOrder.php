@@ -52,23 +52,23 @@
                 if (str_contains($row["status"],'On Process')){
                     echo "<li class='step0 active' id='step1'>Ordered</li>";
                     echo "<li class='step0 text-center' id='step2'>In Kitchen</li>";
-                    echo "<li class='step0 text-right' id='step3'>On The Way</li>";
-                    echo "<li class='step0 text-right' id='step4'>Delivered</li>";
+                    echo "<li class='step0 text-center' id='step3'>On The Way</li>";
+                    echo "<li class='step0 text-center' id='step4'>Delivered</li>";
                 } else if (str_contains($row["status"],'In Kitchen')){
                     echo "<li class='step0 active' id='step1'>Ordered</li>";
                     echo "<li class='step0 text-center active' id='step2'>In Kitchen</li>";
-                    echo "<li class='step0 text-right' id='step3'>On The Way</li>";
-                    echo "<li class='step0 text-right' id='step4'>Delivered</li>";
+                    echo "<li class='step0 text-center' id='step3'>On The Way</li>";
+                    echo "<li class='step0 text-center' id='step4'>Delivered</li>";
                 } else if (str_contains($row["status"],'On The Way')){
                     echo "<li class='step0 active' id='step1'>Ordered</li>";
                     echo "<li class='step0 text-center active' id='step2'>In Kitchen</li>";
-                    echo "<li class='step0 text-right active' id='step3'>On The Way</li>";
-                    echo "<li class='step0 text-right' id='step4'>Delivered</li>";
+                    echo "<li class='step0 text-center active' id='step3'>On The Way</li>";
+                    echo "<li class='step0 text-center' id='step4'>Delivered</li>";
                 } else {
                     echo "<li class='step0 active' id='step1'>Ordered</li>";
                     echo "<li class='step0 text-center active' id='step2'>In Kitchen</li>";
-                    echo "<li class='step0 text-right active' id='step3'>On The Way</li>";
-                    echo "<li class='step0 text-right active' id='step4'>Delivered</li>";
+                    echo "<li class='step0 text-center active' id='step3'>On The Way</li>";
+                    echo "<li class='step0 text-center active' id='step4'>Delivered</li>";
                 }
                 echo "</ul>";
                 echo "</div>";                
