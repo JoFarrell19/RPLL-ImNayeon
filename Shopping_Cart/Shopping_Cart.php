@@ -109,7 +109,7 @@ if (!isset($loggedin_id) || $loggedin_id == NULL) {
           echo "<td></td>";
           echo "<td>" .$row["name"]. "</td>";
           echo "<td>" .$row["price"]. "</td>";
-          echo "<td><form action='../Controller/editquantity.php' method='POST'><input type='text' name='quantity' id='quantity' value=".$row["quantity"]."></td>";
+          echo "<td><form action='../Controller/editquantity.php?id=".$row["id_menu"]."' method='POST'><input type='text' name='quantity' id='quantity' value=".$row["quantity"]."></td>";
           echo "<td><input type='submit' name='edit' value='Edit Quantity'></form></td>";
           echo "<td><button type='submit' onclick=\"window.location.href='../Controller/removefoodcart.php?id=".$row["id_menu"]."'\">Remove</button></td>";
           echo "</tr>";

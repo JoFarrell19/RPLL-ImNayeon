@@ -69,7 +69,7 @@
                                             <div></div>
                                             <div></div>
                                         </div>
-                                        <a  class="hex-content" a href="../Add_Menu/Add_Menu.html">
+                                        <a  class="hex-content" a href="../Add_Menu/Add_Menu.php">
                                             <span class="hex-content-inner">
                                                 <span class="title">Add Menu</a></span>
                                             </span>
@@ -89,7 +89,7 @@
                                             <div></div>
                                             <div></div>
                                         </div>
-                                        <a  class="hex-content" a href="../UpdateStatusOrderAdmin/UpdateHistoryOrder.html">
+                                        <a  class="hex-content" a href="../HistoryOrder/HistoryOrderAdmin.php">
                                             <span class="hex-content-inner">
                                                 <span class="title">See Order History</a></span>
                                             </span>

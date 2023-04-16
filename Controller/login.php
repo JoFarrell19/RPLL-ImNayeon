@@ -13,7 +13,7 @@
             if($row["type"] == 1){
                 echo "<script type='text/javascript'>alert('Login Success.'); window.location.href='../Main_Menu/index.php'</script>";
             }else{
-                echo "<script type='text/javascript'>alert('Login Success.'); window.location.href='../Main_Menu_Admin/MainMenu_Admin.html'</script>";
+                echo "<script type='text/javascript'>alert('Login Success.'); window.location.href='../Main_Menu_Admin/MainMenu_Admin.php'</script>";
             }
 	    } else {
             echo "<script type='text/javascript'>alert('Login Failed.'); window.location.href='../Login_Register/login.html'</script>";
