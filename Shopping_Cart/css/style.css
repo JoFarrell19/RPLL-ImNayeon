@@ -1,0 +1,19 @@
+.shopping-cart-wrapper{
+  margin-top: 15px;
+  padding: 20px;
+}
+
+.checkout{
+  border: 0;
+  margin-top: 20px;
+  padding: 6px 25px;
+  background-color: #6b6;
+  color: #fff;
+  font-size: 25px;
+  border-radius: 3px;
+  position: relative;
+}
+
+.checkout:hover{
+  background-color: #494;
+}
